@@ -18,10 +18,10 @@ DATASETS:
   TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
   TEST: ("voc_2007_test", )
 SOLVER:
-  MAX_ITER: 30000
-  LR_STEPS: [20000, 25000]
+  MAX_ITER: 60000
+  LR_STEPS: [40000, 50000]
   GAMMA: 0.1
-  BATCH_SIZE: 128
+  BATCH_SIZE: 64
   LR: 1e-3
 
 OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
