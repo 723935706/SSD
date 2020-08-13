@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 from ssd.modeling import registry
-from ssd.utils.model_zoo import load_state_dict_from_url
+from torch.utils.model_zoo import load_url as load_state_dict_from_url
 
 
 __all__ = [
@@ -237,7 +237,7 @@ def _shufflenetv2(arch, pretrained, *args, **kwargs):
             raise NotImplementedError('pretrained {} is not supported as of now'.format(arch))
         else:
             state_dict = load_state_dict_from_url(model_url)
-            model.load_state_dict(state_dict)
+            model.load_state_dict(state_dict,strict = False)
 
     return model
 
@@ -256,7 +256,7 @@ def shufflenet_v2_x0_5(pretrained=False, progress=True, **kwargs):
                          [4, 8, 4], [24, 48, 96, 192, 1024], **kwargs)
 
 
-def shufflenet_v2_x1_0(pretrained=False, **kwargs):
+def shufflenet_v2_x1_0(pretrained=True, **kwargs):
     """
     Constructs a ShuffleNetV2 with 1.0x output channels, as described in
     `"ShuffleNet V2: Practical Guidelines for Efficient CNN Architecture Design"
@@ -299,6 +299,6 @@ def shufflenet_v2_x2_0(pretrained=False, progress=True, **kwargs):
 
 
 @registry.BACKBONES.register('shufflenet_v2_cbam')
-def shufflenet_v2_cbam(cfg, pretrained=False):
-    model = shufflenet_v2_x1_0(pretrained=False)
+def shufflenet_v2_cbam(cfg, pretrained=True):
+    model = shufflenet_v2_x1_0(pretrained)
     return model
