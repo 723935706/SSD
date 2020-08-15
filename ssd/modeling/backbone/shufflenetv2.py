@@ -191,7 +191,7 @@ def _shufflenetv2(arch, pretrained, *args, **kwargs):
             raise NotImplementedError('pretrained {} is not supported as of now'.format(arch))
         else:
             state_dict = load_state_dict_from_url(model_url)
-            model.load_state_dict(state_dict，strict = False)
+            model.load_state_dict(state_dict, strict=False)
 
     return model
 
