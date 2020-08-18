@@ -18,8 +18,8 @@ DATASETS:
   TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
   TEST: ("voc_2007_test", )
 SOLVER:
-  MAX_ITER: 60000
-  LR_STEPS: [40000, 50000]
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
   GAMMA: 0.1
   BATCH_SIZE: 64
   LR: 1e-3
