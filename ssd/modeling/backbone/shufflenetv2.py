@@ -109,6 +109,19 @@ class CBAM(nn.Module):
             x_out = self.SpatialGate(x_out)
         return x_out
 
+class Upsample(nn.Module):  # 上采样 + 通道注意力
+    def __init__(self, in_channel, out_channel, kernel_size = 1, stride = 2, output_padding = 0):
+        super().__init__()
+        self.upsample = nn.ConvTranspose2d(in_channels = in_channel, out_channels = out_channel,
+                                           kernel_size = kernel_size,stride = stride, output_padding = output_padding)
+        self.attention = ChannelGate(out_channel)
+
+    def forward(self, x):
+        x = self.upsample(x)
+        x = self.attention(x)
+
+        return x
+
 def channel_shuffle(x, groups):
     # type: (torch.Tensor, int) -> torch.Tensor
     batchsize, num_channels, height, width = x.data.size()
@@ -224,6 +237,13 @@ class ShuffleNetV2(nn.Module):
             InvertedResidual(256, 64, 2)
         ])
 
+        # 232,  1024,   512,    256,    256,    64  通道数
+        # 20,   10,     5,      3,      2,      1   特征图大小
+        self.upsample_1_0 = Upsample(1024, 232, kernel_size=1, stride=2, output_padding=1)
+        self.upsample_2_1 = Upsample(512, 1024, kernel_size=1, stride=2, output_padding=1)
+        self.upsample_3_2 = Upsample(256, 512, kernel_size=1, stride=2, output_padding=0)
+        self.upsample_4_3 = Upsample(256, 256, kernel_size=1, stride=2, output_padding=0)
+        self.upsample_5_4 = Upsample(64, 256, kernel_size=1, stride=2, output_padding=1)
         self.reset_parameters()
 
     def reset_parameters(self):
@@ -239,6 +259,10 @@ class ShuffleNetV2(nn.Module):
             elif isinstance(m, nn.Linear):
                 nn.init.normal_(m.weight, 0, 0.01)
                 nn.init.zeros_(m.bias)
+            elif isinstance(m, nn.ConvTranspose2d): # 上采样参数初始化
+                nn.init.kaiming_normal_(m.weight, mode='fan_out')
+                if m.bias is not None:
+                    nn.init.zeros_(m.bias)
 
     '''
     def _forward_impl(self, x):
@@ -274,6 +298,12 @@ class ShuffleNetV2(nn.Module):
             x = self.extras[i](x)
             features.append(x)
 
+        # 由高到低的特征融合，注意顺序由低到高
+        features[0] = features[0] + self.upsample_1_0(features[1])
+        features[1] = features[1] + self.upsample_2_1(features[2])
+        features[2] = features[2] + self.upsample_3_2(features[3])
+        features[3] = features[3] + self.upsample_4_3(features[4])
+        features[4] = features[4] + self.upsample_5_4(features[5])
         return tuple(features)
 
 
