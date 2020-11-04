@@ -94,10 +94,10 @@ class InvertedResidual(nn.Module):
     def forward(self, x):
         if self.stride == 1:
             x1, x2 = x.chunk(2, dim=1)
-            se_out = self.se(self.branch2(x2))
+            se_out = self.branch2(x2) + self.se(self.branch2(x2))
             out = torch.cat((x1, se_out), dim=1)
         else:
-            se_out = self.se(self.branch2(x))
+            se_out = self.branch2(x) + self.se(self.branch2(x))
             out = torch.cat((self.branch1(x), se_out), dim=1)
 
         out = channel_shuffle(out, 2)
