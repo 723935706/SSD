@@ -10,8 +10,8 @@ MODEL:
 INPUT:
   IMAGE_SIZE: 300
 DATASETS:
-  TRAIN: ("coco_2017_train",)
-  TEST: ("coco_2017_val", )
+  TRAIN: ("coco_2014_train", "coco_2014_valminusminival")
+  TEST: ("coco_2014_minival", )
 SOLVER:
   MAX_ITER: 400000
   LR_STEPS: [280000, 360000]
