@@ -21,7 +21,7 @@ SOLVER:
   MAX_ITER: 120000
   LR_STEPS: [80000, 100000]
   GAMMA: 0.1
-  BATCH_SIZE: 32
+  BATCH_SIZE: 16
   LR: 1e-3
 
 OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
