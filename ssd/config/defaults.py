@@ -17,8 +17,8 @@ _C.MODEL.SIZE_VARIANCE = 0.2
 # Backbone
 # ---------------------------------------------------------------------------- #
 _C.MODEL.BACKBONE = CN()
-_C.MODEL.BACKBONE.NAME = 'vgg'
-_C.MODEL.BACKBONE.OUT_CHANNELS = (512, 1024, 512, 256, 256, 256)
+_C.MODEL.BACKBONE.NAME = 'shufflenet_v2'
+_C.MODEL.BACKBONE.OUT_CHANNELS = (232, 1024, 512, 256, 256, 64)
 _C.MODEL.BACKBONE.PRETRAINED = True
 
 # -----------------------------------------------------------------------------
