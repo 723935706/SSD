@@ -17,22 +17,7 @@ model_urls = {
     'shufflenetv2_x2.0': None,
 }
 
-class SELayer(nn.Module):
-    def __init__(self, channel, reduction=16):
-        super(SELayer, self).__init__()
-        self.avg_pool = nn.AdaptiveAvgPool2d(1)
-        self.fc = nn.Sequential(
-            nn.Linear(channel, channel // reduction, bias=False),
-            nn.ReLU(inplace=True),
-            nn.Linear(channel // reduction, channel, bias=False),
-            nn.Sigmoid()
-        )
 
-    def forward(self, x):
-        b, c, _, _ = x.size()
-        y = self.avg_pool(x).view(b, c)
-        y = self.fc(y).view(b, c, 1, 1)
-        return x * y.expand_as(x)
 
 
 def channel_shuffle(x, groups):
@@ -85,7 +70,6 @@ class InvertedResidual(nn.Module):
             nn.BatchNorm2d(branch_features),
             nn.ReLU(inplace=True),
         )
-        # self.se = SELayer(branch_features, 16)
 
     @staticmethod
     def depthwise_conv(i, o, kernel_size, stride=1, padding=0, bias=False):
@@ -94,10 +78,8 @@ class InvertedResidual(nn.Module):
     def forward(self, x):
         if self.stride == 1:
             x1, x2 = x.chunk(2, dim=1)
-            # se_out = self.branch2(x2) + self.se(self.branch2(x2))
             out = torch.cat((x1, self.branch2(x2)), dim=1)
         else:
-            # se_out = self.branch2(x) + self.se(self.branch2(x))
             out = torch.cat((self.branch1(x), self.branch2(x)), dim=1)
 
         out = channel_shuffle(out, 2)
@@ -149,11 +131,6 @@ class ShuffleNetV2(nn.Module):
             InvertedResidual(256, 256, 2),
             InvertedResidual(256, 64, 2)
         ])
-        self.se1 = SELayer(232, 16)
-        self.se2 = SELayer(1024, 16)
-        self.se3 = SELayer(512, 16)
-        self.se4 = SELayer(256, 16)
-        self.se5 = SELayer(256, 16)
 
         self.reset_parameters()
 
@@ -170,8 +147,7 @@ class ShuffleNetV2(nn.Module):
                 nn.init.zeros_(m.bias)
             elif isinstance(m, nn.Linear):
                 nn.init.normal_(m.weight, 0, 0.01)
-                if m.bias is not None:
-                    nn.init.zeros_(m.bias)
+                nn.init.zeros_(m.bias)
 
     '''
     def _forward_impl(self, x):
@@ -197,29 +173,15 @@ class ShuffleNetV2(nn.Module):
         x = self.maxpool(x)
         x = self.stage2(x)
         x = self.stage3(x)
-        x = x + self.se1(x)
         features.append(x)
 
         x = self.stage4(x)
         x = self.conv5(x)
-        x = x + self.se2(x)
         features.append(x)
 
-        x = self.extras[0](x)
-        x = x + self.se3(x)
-        features.append(x)
-
-        x = self.extras[1](x)
-        x = x + self.se4(x)
-        features.append(x)
-
-        x = self.extras[2](x)
-        x = x + self.se5(x)
-        features.append(x)
-
-        x = self.extras[3](x)
-        features.append(x)
-
+        for i in range(len(self.extras)):
+            x = self.extras[i](x)
+            features.append(x)
 
         return tuple(features)
 
