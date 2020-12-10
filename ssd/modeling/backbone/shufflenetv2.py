@@ -3,88 +3,214 @@ import torch.nn as nn
 from torch.nn import functional as F
 from ssd.modeling import registry
 from ssd.utils.model_zoo import load_state_dict_from_url
+from timm.models.layers import SelectAdaptivePool2d
+from timm.models.layers.activations import hard_sigmoid
+from timm.models import resume_checkpoint
+from .builder_util import *
+from .build_childnet import *
+
+arch_list = [[0], [3], [3, 3], [3, 3], [3, 3, 3], [3, 3], [0]]
+image_size = 160
+stem = ['ds_r1_k3_s1_e1_c16_se0.25', 'cn_r1_k1_s1_c320_se0.25']
+choice_block_pool = ['ir_r1_k3_s2_e4_c24_se0.25',
+                     'ir_r1_k5_s2_e4_c40_se0.25',
+                     'ir_r1_k3_s2_e6_c80_se0.25',
+                     'ir_r1_k3_s1_e6_c96_se0.25',
+                     'ir_r1_k5_s2_e6_c192_se0.25']
+arch_def = [[stem[0]]] + [[choice_block_pool[idx]
+                           for repeat_times in range(len(arch_list[idx + 1]))]
+                          for idx in range(len(choice_block_pool))] + [[stem[1]]]
 
 
-__all__ = [
-    'ShuffleNetV2', 'shufflenet_v2_x0_5', 'shufflenet_v2_x1_0',
-    'shufflenet_v2_x1_5', 'shufflenet_v2_x2_0'
-]
-
-model_urls = {
-    'shufflenetv2_x0.5': 'https://download.pytorch.org/models/shufflenetv2_x0.5-f707e7126e.pth',
-    'shufflenetv2_x1.0': 'https://download.pytorch.org/models/shufflenetv2_x1-5666bf0f80.pth',
-    'shufflenetv2_x1.5': None,
-    'shufflenetv2_x2.0': None,
-}
-
-
-
-
-def channel_shuffle(x, groups):
-    # type: (torch.Tensor, int) -> torch.Tensor
-    batchsize, num_channels, height, width = x.data.size()
-    channels_per_group = num_channels // groups
-
-    # reshape
-    x = x.view(batchsize, groups,
-               channels_per_group, height, width)
-
-    x = torch.transpose(x, 1, 2).contiguous()
-
-    # flatten
-    x = x.view(batchsize, -1, height, width)
-
-    return x
+def decode_arch_def(
+        arch_def,
+        depth_multiplier=1.0,
+        depth_trunc='ceil',
+        experts_multiplier=1):
+    arch_args = []
+    for stack_idx, block_strings in enumerate(arch_def):
+        assert isinstance(block_strings, list)
+        stack_args = []
+        repeats = []
+        for block_str in block_strings:
+            assert isinstance(block_str, str)
+            ba, rep = decode_block_str(block_str)
+            if ba.get('num_experts', 0) > 0 and experts_multiplier > 1:
+                ba['num_experts'] *= experts_multiplier
+            stack_args.append(ba)
+            repeats.append(rep)
+        arch_args.append(
+            scale_stage_depth(
+                stack_args,
+                repeats,
+                depth_multiplier,
+                depth_trunc))
+    return arch_args
 
 
-class InvertedResidual(nn.Module):
-    def __init__(self, inp, oup, stride):
-        super(InvertedResidual, self).__init__()
+class ChildNet(nn.Module):
 
-        if not (1 <= stride <= 3):
-            raise ValueError('illegal stride value')
-        self.stride = stride
+    def __init__(
+            self,
+            block_args,
+            num_classes=21,
+            in_chans=3,
+            stem_size=16,
+            num_features=1280,
+            head_bias=True,
+            channel_multiplier=1.0,
+            pad_type='',
+            act_layer=nn.ReLU,
+            drop_rate=0.,
+            drop_path_rate=0.,
+            se_kwargs=None,
+            norm_layer=nn.BatchNorm2d,
+            norm_kwargs=None,
+            global_pool='avg',
+            logger=None,
+            verbose=False):
+        super(ChildNet, self).__init__()
 
-        branch_features = oup // 2
-        assert (self.stride != 1) or (inp == branch_features << 1)
+        self.num_classes = num_classes
+        self.num_features = num_features
+        self.drop_rate = drop_rate
+        self._in_chs = in_chans
+        self.logger = logger
 
-        if self.stride > 1:
-            self.branch1 = nn.Sequential(
-                self.depthwise_conv(inp, inp, kernel_size=3, stride=self.stride, padding=1),
-                nn.BatchNorm2d(inp),
-                nn.Conv2d(inp, branch_features, kernel_size=1, stride=1, padding=0, bias=False),
-                nn.BatchNorm2d(branch_features),
-                nn.ReLU(inplace=True),
-            )
-        else:
-            self.branch1 = nn.Sequential()
+        # Stem
+        stem_size = round_channels(stem_size, channel_multiplier)
+        self.conv_stem = create_conv2d(
+            self._in_chs, stem_size, 3, stride=2, padding=pad_type)
+        self.bn1 = norm_layer(stem_size, **norm_kwargs)
+        self.act1 = act_layer(inplace=True)
+        self._in_chs = stem_size
 
-        self.branch2 = nn.Sequential(
-            nn.Conv2d(inp if (self.stride > 1) else branch_features,
-                      branch_features, kernel_size=1, stride=1, padding=0, bias=False),
-            nn.BatchNorm2d(branch_features),
-            nn.ReLU(inplace=True),
-            self.depthwise_conv(branch_features, branch_features, kernel_size=3, stride=self.stride, padding=1),
-            nn.BatchNorm2d(branch_features),
-            nn.Conv2d(branch_features, branch_features, kernel_size=1, stride=1, padding=0, bias=False),
-            nn.BatchNorm2d(branch_features),
-            nn.ReLU(inplace=True),
-        )
+        # Middle stages (IR/ER/DS Blocks)
+        builder = ChildNetBuilder(
+            channel_multiplier, 8, None, 32, pad_type, act_layer, se_kwargs,
+            norm_layer, norm_kwargs, drop_path_rate, verbose=verbose)
+        self.blocks = nn.Sequential(*builder(self._in_chs, block_args))
+        # self.blocks = builder(self._in_chs, block_args)
+        self._in_chs = builder.in_chs
 
-    @staticmethod
-    def depthwise_conv(i, o, kernel_size, stride=1, padding=0, bias=False):
-        return nn.Conv2d(i, o, kernel_size, stride, padding, bias=bias, groups=i)
+        # Head + Pooling
+        self.global_pool = SelectAdaptivePool2d(pool_type=global_pool)
+        self.conv_head = create_conv2d(
+            self._in_chs,
+            self.num_features,
+            1,
+            padding=pad_type,
+            bias=head_bias)
+        self.act2 = act_layer(inplace=True)
+
+        # Classifier
+
+        self.classifi = nn.Linear(
+            self.num_features *
+            self.global_pool.feat_mult(),
+            self.num_classes)
+
+
+        efficientnet_init_weights(self)
+
+
+    '''
+    def get_classifi(self):
+        return self.classifi
+
+    def reset_classifi(self, num_classes, global_pool='avg'):
+        self.global_pool = SelectAdaptivePool2d(pool_type=global_pool)
+        self.num_classes = num_classes
+        self.classifi = nn.Linear(
+            self.num_features * self.global_pool.feat_mult(),
+            num_classes) if self.num_classes else None
+    
+
+
+    def forward_features(self, x):
+        # architecture = [[0], [], [], [], [], [0]]
+        x = self.conv_stem(x)
+        print(x.shape)
+        x = self.bn1(x)
+        x = self.act1(x)
+        #x = self.blocks(x)
+        for i in self.blocks:
+            x = i(x)
+            print(x.shape)
+        x = self.global_pool(x)
+        x = self.conv_head(x)
+        x = self.act2(x)
+        return x
+    '''
 
     def forward(self, x):
-        if self.stride == 1:
-            x1, x2 = x.chunk(2, dim=1)
-            out = torch.cat((x1, self.branch2(x2)), dim=1)
+        features = []
+        #x = self.forward_features(x)
+        x = self.conv_stem(x)
+        #print(x.shape)
+        x = self.bn1(x)
+        x = self.act1(x)
+        #print(len(self.blocks))
+        x = self.blocks[0](x)
+        x = self.blocks[1](x)
+        #features.append(x)  # 40
+        x = self.blocks[2](x)
+        features.append(x)  # 20
+        x = self.blocks[3](x)
+        x = self.blocks[4](x)
+        features.append(x)  # 10
+        x = self.blocks[5](x)
+        x = self.blocks[6](x)
+        features.append(x)  # 5
+        # features 特征图尺寸为 20,10,5
+        return tuple(features)
+
+
+def gen_childnet(arch_list, arch_def, **kwargs):
+    # arch_list = [[0], [], [], [], [], [0]]
+    choices = {'kernel_size': [3, 5, 7], 'exp_ratio': [4, 6]}
+    choices_list = [[x, y] for x in choices['kernel_size']
+                    for y in choices['exp_ratio']]
+
+    num_features = 1280
+
+    # act_layer = HardSwish
+    act_layer = Swish
+
+    new_arch = []
+    # change to child arch_def
+    for i, (layer_choice, layer_arch) in enumerate(zip(arch_list, arch_def)):
+        if len(layer_arch) == 1:
+            new_arch.append(layer_arch)
+            continue
         else:
-            out = torch.cat((self.branch1(x), self.branch2(x)), dim=1)
+            new_layer = []
+            for j, (block_choice, block_arch) in enumerate(
+                    zip(layer_choice, layer_arch)):
+                kernel_size, exp_ratio = choices_list[block_choice]
+                elements = block_arch.split('_')
+                block_arch = block_arch.replace(
+                    elements[2], 'k{}'.format(str(kernel_size)))
+                block_arch = block_arch.replace(
+                    elements[4], 'e{}'.format(str(exp_ratio)))
+                new_layer.append(block_arch)
+            new_arch.append(new_layer)
 
-        out = channel_shuffle(out, 2)
-
-        return out
+    model_kwargs = dict(
+        block_args=decode_arch_def(new_arch),
+        num_features=num_features,
+        stem_size=16,
+        norm_kwargs=resolve_bn_args(kwargs),
+        act_layer=act_layer,
+        se_kwargs=dict(
+            act_layer=nn.ReLU,
+            gate_fn=hard_sigmoid,
+            reduce_mid=True,
+            divisor=8),
+        **kwargs,
+    )
+    model = ChildNet(**model_kwargs)
+    return model
 
 
 class ShuffleNetV2(nn.Module):
@@ -258,5 +384,13 @@ def shufflenet_v2_x2_0(pretrained=False, progress=True, **kwargs):
 
 @registry.BACKBONES.register('shufflenet_v2')
 def shufflenet_v2(cfg, pretrained=True):
-    model = shufflenet_v2_x1_0(pretrained)
+    model = gen_childnet(
+        arch_list,
+        arch_def,
+        num_classes=21,
+        drop_rate=0.0,
+        global_pool='avg')
+    #_, __ = resume_checkpoint(model, '114.pth.tar')
+    state_dict = torch.load("114.pth.tar")["state_dict"]
+    model.load_state_dict(state_dict, strict=False)
     return model
