@@ -1,0 +1,664 @@
+2020-12-11 12:41:36,892 SSD INFO: Using 1 GPUs
+2020-12-11 12:41:36,892 SSD INFO: Namespace(config_file='configs/childnet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=500, skip_test=False, use_tensorboard=True)
+2020-12-11 12:41:36,892 SSD INFO: Loaded configuration file configs/childnet_ssd320_voc0712.yaml
+2020-12-11 12:41:36,892 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'childnet'
+    OUT_CHANNELS: (40,96,320)
+  PRIORS:
+    FEATURE_MAPS: [28, 14, 7]
+    STRIDES: [8, 16, 32]
+    MIN_SIZES: [42, 74, 105]
+    MAX_SIZES: [74, 105, 136]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/childnet_ssd320_voc0712'
+
+2020-12-11 12:41:36,892 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: childnet
+    OUT_CHANNELS: (40, 96, 320)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [28, 14, 7]
+    MAX_SIZES: [74, 105, 136]
+    MIN_SIZES: [42, 74, 105]
+    STRIDES: [8, 16, 32]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/childnet_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-11 12:45:11,758 SSD INFO: Using 1 GPUs
+2020-12-11 12:45:11,758 SSD INFO: Namespace(config_file='configs/childnet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=500, skip_test=False, use_tensorboard=True)
+2020-12-11 12:45:11,758 SSD INFO: Loaded configuration file configs/childnet_ssd320_voc0712.yaml
+2020-12-11 12:45:11,758 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'childnet'
+    OUT_CHANNELS: (40,96,320)
+  PRIORS:
+    FEATURE_MAPS: [28, 14, 7]
+    STRIDES: [8, 16, 32]
+    MIN_SIZES: [42, 74, 105]
+    MAX_SIZES: [74, 105, 136]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/childnet_ssd320_voc0712'
+
+2020-12-11 12:45:11,758 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: childnet
+    OUT_CHANNELS: (40, 96, 320)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [28, 14, 7]
+    MAX_SIZES: [74, 105, 136]
+    MIN_SIZES: [42, 74, 105]
+    STRIDES: [8, 16, 32]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/childnet_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-11 12:45:57,035 SSD INFO: Using 1 GPUs
+2020-12-11 12:45:57,035 SSD INFO: Namespace(config_file='configs/childnet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=500, skip_test=False, use_tensorboard=True)
+2020-12-11 12:45:57,035 SSD INFO: Loaded configuration file configs/childnet_ssd320_voc0712.yaml
+2020-12-11 12:45:57,035 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'childnet'
+    OUT_CHANNELS: (40,96,320)
+  PRIORS:
+    FEATURE_MAPS: [28, 14, 7]
+    STRIDES: [8, 16, 32]
+    MIN_SIZES: [42, 74, 105]
+    MAX_SIZES: [74, 105, 136]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/childnet_ssd320_voc0712'
+
+2020-12-11 12:45:57,035 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: childnet
+    OUT_CHANNELS: (40, 96, 320)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [28, 14, 7]
+    MAX_SIZES: [74, 105, 136]
+    MIN_SIZES: [42, 74, 105]
+    STRIDES: [8, 16, 32]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/childnet_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-11 12:46:00,035 SSD.trainer INFO: No checkpoint found.
+2020-12-11 12:46:00,051 SSD.trainer INFO: Start training ...
+2020-12-11 12:46:40,033 SSD INFO: Using 1 GPUs
+2020-12-11 12:46:40,033 SSD INFO: Namespace(config_file='configs/childnet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=500, skip_test=False, use_tensorboard=True)
+2020-12-11 12:46:40,033 SSD INFO: Loaded configuration file configs/childnet_ssd320_voc0712.yaml
+2020-12-11 12:46:40,033 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'childnet'
+    OUT_CHANNELS: (40,96,320)
+  PRIORS:
+    FEATURE_MAPS: [28, 14, 7]
+    STRIDES: [8, 16, 32]
+    MIN_SIZES: [42, 74, 105]
+    MAX_SIZES: [74, 105, 136]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/childnet_ssd320_voc0712'
+
+2020-12-11 12:46:40,033 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: childnet
+    OUT_CHANNELS: (40, 96, 320)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [28, 14, 7]
+    MAX_SIZES: [74, 105, 136]
+    MIN_SIZES: [42, 74, 105]
+    STRIDES: [8, 16, 32]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/childnet_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-11 12:46:41,893 SSD.trainer INFO: No checkpoint found.
+2020-12-11 12:46:41,908 SSD.trainer INFO: Start training ...
+2020-12-11 13:01:17,996 SSD INFO: Using 1 GPUs
+2020-12-11 13:01:17,996 SSD INFO: Namespace(config_file='configs/childnet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=500, skip_test=False, use_tensorboard=True)
+2020-12-11 13:01:17,996 SSD INFO: Loaded configuration file configs/childnet_ssd320_voc0712.yaml
+2020-12-11 13:01:17,996 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'childnet'
+    OUT_CHANNELS: (96,320,640)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5]
+    STRIDES: [16, 32, 64]
+    MIN_SIZES: [60, 105, 150]
+    MAX_SIZES: [105, 150, 195]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/childnet_ssd320_voc0712'
+
+2020-12-11 13:01:17,996 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: childnet
+    OUT_CHANNELS: (96, 320, 640)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5]
+    MAX_SIZES: [105, 150, 195]
+    MIN_SIZES: [60, 105, 150]
+    STRIDES: [16, 32, 64]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/childnet_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-11 13:07:01,557 SSD INFO: Using 1 GPUs
+2020-12-11 13:07:01,557 SSD INFO: Namespace(config_file='configs/childnet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=500, skip_test=False, use_tensorboard=True)
+2020-12-11 13:07:01,557 SSD INFO: Loaded configuration file configs/childnet_ssd320_voc0712.yaml
+2020-12-11 13:07:01,557 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'childnet'
+    OUT_CHANNELS: (96,320,640)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5]
+    STRIDES: [16, 32, 64]
+    MIN_SIZES: [60, 105, 150]
+    MAX_SIZES: [105, 150, 195]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/childnet_ssd320_voc0712'
+
+2020-12-11 13:07:01,557 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: childnet
+    OUT_CHANNELS: (96, 320, 640)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5]
+    MAX_SIZES: [105, 150, 195]
+    MIN_SIZES: [60, 105, 150]
+    STRIDES: [16, 32, 64]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/childnet_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-11 13:10:00,332 SSD INFO: Using 1 GPUs
+2020-12-11 13:10:00,332 SSD INFO: Namespace(config_file='configs/childnet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=500, skip_test=False, use_tensorboard=True)
+2020-12-11 13:10:00,332 SSD INFO: Loaded configuration file configs/childnet_ssd320_voc0712.yaml
+2020-12-11 13:10:00,332 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'childnet'
+    OUT_CHANNELS: (96,320,640)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5]
+    STRIDES: [16, 32, 64]
+    MIN_SIZES: [60, 105, 150]
+    MAX_SIZES: [105, 150, 195]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/childnet_ssd320_voc0712'
+
+2020-12-11 13:10:00,332 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: childnet
+    OUT_CHANNELS: (96, 320, 640)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5]
+    MAX_SIZES: [105, 150, 195]
+    MIN_SIZES: [60, 105, 150]
+    STRIDES: [16, 32, 64]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/childnet_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-11 13:11:00,492 SSD INFO: Using 1 GPUs
+2020-12-11 13:11:00,508 SSD INFO: Namespace(config_file='configs/childnet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=500, skip_test=False, use_tensorboard=True)
+2020-12-11 13:11:00,508 SSD INFO: Loaded configuration file configs/childnet_ssd320_voc0712.yaml
+2020-12-11 13:11:00,508 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'childnet'
+    OUT_CHANNELS: (96,320,640)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5]
+    STRIDES: [16, 32, 64]
+    MIN_SIZES: [60, 105, 150]
+    MAX_SIZES: [105, 150, 195]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/childnet_ssd320_voc0712'
+
+2020-12-11 13:11:00,508 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: childnet
+    OUT_CHANNELS: (96, 320, 640)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5]
+    MAX_SIZES: [105, 150, 195]
+    MIN_SIZES: [60, 105, 150]
+    STRIDES: [16, 32, 64]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/childnet_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-11 13:11:02,617 SSD.trainer INFO: No checkpoint found.
+2020-12-11 13:11:02,633 SSD.trainer INFO: Start training ...
+2020-12-11 13:11:16,366 SSD.trainer INFO: iter: 000010, lr: 0.00035, total_loss: 28.638 (28.638), reg_loss: 5.577 (5.577), cls_loss: 23.061 (23.061), time: 1.245 (1.245), eta: 1 day, 17:30:13, mem: 1077M
+2020-12-11 13:11:20,772 SSD.trainer INFO: iter: 000020, lr: 0.00036, total_loss: 25.883 (27.261), reg_loss: 5.169 (5.373), cls_loss: 20.715 (21.888), time: 0.441 (0.843), eta: 1 day, 4:05:31, mem: 1077M
