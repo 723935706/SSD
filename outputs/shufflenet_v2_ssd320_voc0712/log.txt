@@ -1,0 +1,3380 @@
+2020-07-12 13:40:23,967 SSD INFO: Using 1 GPUs
+2020-07-12 13:40:23,967 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-07-12 13:40:23,967 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-07-12 13:40:23,967 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1280, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 32
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+2020-07-12 13:40:23,967 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 8
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1280, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 32
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-07-12 13:45:50,149 SSD INFO: Using 1 GPUs
+2020-07-12 13:45:50,149 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-07-12 13:45:50,149 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-07-12 13:45:50,149 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1280, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 32
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+2020-07-12 13:45:50,149 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 8
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1280, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 32
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-07-12 13:46:48,592 SSD INFO: Using 1 GPUs
+2020-07-12 13:46:48,592 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-07-12 13:46:48,592 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-07-12 13:46:48,592 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1280, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 32
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+2020-07-12 13:46:48,592 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 8
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1280, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 32
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-07-12 13:46:49,951 SSD.trainer INFO: No checkpoint found.
+2020-07-12 13:46:49,967 SSD.trainer INFO: Start training ...
+2020-07-14 18:41:28,661 SSD INFO: Using 1 GPUs
+2020-07-14 18:41:28,725 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-07-14 18:41:28,726 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-07-14 18:41:28,726 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1280, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 32
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+2020-07-14 18:41:28,727 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 8
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1280, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 32
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-07-14 18:41:30,194 SSD.trainer INFO: No checkpoint found.
+2020-07-14 18:41:30,361 SSD.trainer INFO: Start training ...
+2020-07-14 18:42:26,430 SSD INFO: Using 1 GPUs
+2020-07-14 18:42:26,431 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-07-14 18:42:26,432 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-07-14 18:42:26,435 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1280, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 8
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+2020-07-14 18:42:26,436 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 8
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1280, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 8
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-07-14 18:42:28,128 SSD.trainer INFO: No checkpoint found.
+2020-07-14 18:42:28,142 SSD.trainer INFO: Start training ...
+2020-07-14 18:44:53,854 SSD INFO: Using 1 GPUs
+2020-07-14 18:44:53,857 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-07-14 18:44:53,857 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-07-14 18:44:53,859 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 8
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+2020-07-14 18:44:53,860 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 8
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 8
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-07-14 18:44:55,203 SSD.trainer INFO: No checkpoint found.
+2020-07-14 18:44:55,213 SSD.trainer INFO: Start training ...
+2020-07-14 18:47:49,600 SSD INFO: Using 1 GPUs
+2020-07-14 18:47:49,601 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-07-14 18:47:49,601 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-07-14 18:47:49,601 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 8
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+2020-07-14 18:47:49,602 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 8
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 8
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-07-14 18:47:51,053 SSD.trainer INFO: No checkpoint found.
+2020-07-14 18:47:51,064 SSD.trainer INFO: Start training ...
+2020-07-14 18:48:18,440 SSD.trainer INFO: iter: 000010, lr: 0.00035, total_loss: 24.525 (24.525), reg_loss: 4.429 (4.429), cls_loss: 20.095 (20.095), time: 2.620 (2.620), eta: 3 days, 15:19:46, mem: 951M
+2020-07-14 18:48:21,999 SSD.trainer INFO: iter: 000020, lr: 0.00036, total_loss: 22.114 (23.320), reg_loss: 4.156 (4.293), cls_loss: 17.958 (19.027), time: 0.358 (1.489), eta: 2 days, 1:37:24, mem: 951M
+2020-07-14 18:48:25,377 SSD.trainer INFO: iter: 000030, lr: 0.00037, total_loss: 20.868 (22.502), reg_loss: 4.232 (4.273), cls_loss: 16.636 (18.230), time: 0.338 (1.105), eta: 1 day, 12:49:51, mem: 951M
+2020-07-14 18:48:28,752 SSD.trainer INFO: iter: 000040, lr: 0.00039, total_loss: 19.569 (21.769), reg_loss: 3.970 (4.197), cls_loss: 15.599 (17.572), time: 0.338 (0.913), eta: 1 day, 6:25:56, mem: 951M
+2020-10-22 16:15:59,431 SSD INFO: Using 1 GPUs
+2020-10-22 16:15:59,445 SSD INFO: Namespace(ckpt='weight/model_final.pth', config_file='configs/shufflenet_ssd320_voc0712.yaml', local_rank=0, opts=[], output_dir='eval_results')
+2020-10-22 16:15:59,446 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-10-22 16:15:59,446 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 32
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-10-22 16:15:59,447 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 4
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 32
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-10-22 16:16:07,270 SSD.inference INFO: Loading checkpoint from weight/model_final.pth
+2020-10-22 16:16:07,847 SSD.inference INFO: Evaluating voc_2007_test dataset(4952 images):
+2020-10-22 16:18:42,228 SSD.inference INFO: mAP: 0.6214
+aeroplane       : 0.6449
+bicycle         : 0.7192
+bird            : 0.5659
+boat            : 0.5053
+bottle          : 0.2530
+bus             : 0.7175
+car             : 0.6932
+cat             : 0.8057
+chair           : 0.4337
+cow             : 0.5325
+diningtable     : 0.6712
+dog             : 0.7530
+horse           : 0.7802
+motorbike       : 0.7251
+person          : 0.6590
+pottedplant     : 0.3411
+sheep           : 0.5466
+sofa            : 0.7232
+train           : 0.7756
+tvmonitor       : 0.5824
+
+2020-11-01 14:06:42,038 SSD INFO: Using 1 GPUs
+2020-11-01 14:06:42,087 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-11-01 14:06:42,088 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-11-01 14:06:42,090 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 8
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-11-01 14:06:42,090 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 4
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 8
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-11-01 14:07:08,377 SSD.trainer INFO: No checkpoint found.
+2020-11-01 14:07:08,447 SSD.trainer INFO: Start training ...
+2020-11-01 14:08:12,603 SSD.trainer INFO: iter: 000010, lr: 0.00035, total_loss: 22.905 (22.905), reg_loss: 4.009 (4.009), cls_loss: 18.896 (18.896), time: 5.386 (5.386), eta: 7 days, 11:30:28, mem: 808M
+2020-11-01 14:08:23,398 SSD.trainer INFO: iter: 000020, lr: 0.00036, total_loss: 20.971 (21.938), reg_loss: 3.733 (3.871), cls_loss: 17.238 (18.067), time: 1.084 (3.235), eta: 4 days, 11:48:18, mem: 808M
+2020-11-01 14:08:34,664 SSD.trainer INFO: iter: 000030, lr: 0.00037, total_loss: 19.328 (21.068), reg_loss: 3.605 (3.782), cls_loss: 15.724 (17.286), time: 1.127 (2.532), eta: 3 days, 12:22:51, mem: 808M
+2020-11-01 14:08:46,114 SSD.trainer INFO: iter: 000040, lr: 0.00039, total_loss: 18.406 (20.403), reg_loss: 3.504 (3.713), cls_loss: 14.902 (16.690), time: 1.145 (2.185), eta: 3 days, 0:49:05, mem: 808M
+2020-11-01 14:08:57,095 SSD.trainer INFO: iter: 000050, lr: 0.00040, total_loss: 17.842 (19.890), reg_loss: 3.541 (3.678), cls_loss: 14.301 (16.212), time: 1.098 (1.968), eta: 2 days, 17:34:02, mem: 808M
+2020-11-01 14:09:08,987 SSD.trainer INFO: iter: 000060, lr: 0.00041, total_loss: 17.498 (19.492), reg_loss: 3.739 (3.688), cls_loss: 13.760 (15.803), time: 1.189 (1.838), eta: 2 days, 13:14:17, mem: 808M
+2020-11-01 14:09:22,236 SSD.trainer INFO: iter: 000070, lr: 0.00043, total_loss: 16.550 (19.072), reg_loss: 3.345 (3.639), cls_loss: 13.205 (15.432), time: 1.325 (1.765), eta: 2 days, 10:47:27, mem: 808M
+2020-11-01 14:09:35,646 SSD.trainer INFO: iter: 000080, lr: 0.00044, total_loss: 16.316 (18.727), reg_loss: 3.491 (3.621), cls_loss: 12.825 (15.106), time: 1.341 (1.712), eta: 2 days, 9:01:17, mem: 808M
+2020-11-01 14:09:48,642 SSD.trainer INFO: iter: 000090, lr: 0.00045, total_loss: 15.725 (18.394), reg_loss: 3.407 (3.597), cls_loss: 12.317 (14.796), time: 1.300 (1.666), eta: 2 days, 7:29:28, mem: 808M
+2020-11-01 14:10:07,447 SSD.trainer INFO: iter: 000100, lr: 0.00047, total_loss: 15.603 (18.114), reg_loss: 3.583 (3.596), cls_loss: 12.019 (14.519), time: 1.880 (1.687), eta: 2 days, 8:12:02, mem: 808M
+2020-11-01 14:10:25,247 SSD.trainer INFO: iter: 000110, lr: 0.00048, total_loss: 14.881 (17.820), reg_loss: 3.280 (3.567), cls_loss: 11.600 (14.253), time: 1.780 (1.696), eta: 2 days, 8:28:35, mem: 808M
+2020-11-01 14:10:49,699 SSD.trainer INFO: iter: 000120, lr: 0.00049, total_loss: 14.669 (17.558), reg_loss: 3.452 (3.557), cls_loss: 11.217 (14.000), time: 2.445 (1.758), eta: 2 days, 10:33:03, mem: 808M
+2020-11-01 14:11:13,112 SSD.trainer INFO: iter: 000130, lr: 0.00051, total_loss: 14.121 (17.293), reg_loss: 3.157 (3.527), cls_loss: 10.965 (13.767), time: 2.341 (1.803), eta: 2 days, 12:02:23, mem: 808M
+2020-11-01 14:11:33,571 SSD.trainer INFO: iter: 000140, lr: 0.00052, total_loss: 13.658 (17.034), reg_loss: 3.309 (3.511), cls_loss: 10.349 (13.523), time: 2.046 (1.820), eta: 2 days, 12:36:42, mem: 808M
+2020-11-01 14:11:59,118 SSD.trainer INFO: iter: 000150, lr: 0.00053, total_loss: 13.373 (16.790), reg_loss: 3.124 (3.485), cls_loss: 10.250 (13.305), time: 2.555 (1.869), eta: 2 days, 14:14:11, mem: 808M
+2020-11-01 14:12:23,968 SSD.trainer INFO: iter: 000160, lr: 0.00055, total_loss: 13.112 (16.560), reg_loss: 3.221 (3.469), cls_loss: 9.892 (13.091), time: 2.485 (1.908), eta: 2 days, 15:30:41, mem: 808M
+2020-11-01 14:12:43,703 SSD.trainer INFO: iter: 000170, lr: 0.00056, total_loss: 12.437 (16.317), reg_loss: 3.066 (3.445), cls_loss: 9.371 (12.872), time: 1.974 (1.912), eta: 2 days, 15:38:05, mem: 808M
+2020-11-01 14:13:08,129 SSD.trainer INFO: iter: 000180, lr: 0.00057, total_loss: 12.331 (16.096), reg_loss: 3.099 (3.426), cls_loss: 9.231 (12.670), time: 2.443 (1.941), eta: 2 days, 16:36:40, mem: 808M
+2020-11-01 14:13:37,813 SSD.trainer INFO: iter: 000190, lr: 0.00059, total_loss: 12.271 (15.895), reg_loss: 3.218 (3.415), cls_loss: 9.053 (12.480), time: 2.968 (1.995), eta: 2 days, 18:24:17, mem: 808M
+2020-12-10 17:34:59,885 SSD INFO: Using 1 GPUs
+2020-12-10 17:34:59,895 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 17:34:59,896 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 17:34:59,896 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 17:34:59,906 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 17:36:18,762 SSD INFO: Using 1 GPUs
+2020-12-10 17:36:18,763 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 17:36:18,763 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 17:36:18,764 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 17:36:18,765 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 17:38:08,209 SSD INFO: Using 1 GPUs
+2020-12-10 17:38:08,209 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 17:38:08,209 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 17:38:08,210 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 17:38:08,211 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 17:40:16,940 SSD INFO: Using 1 GPUs
+2020-12-10 17:40:16,940 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 17:40:16,941 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 17:40:16,941 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 17:40:16,942 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 17:40:29,799 SSD INFO: Using 1 GPUs
+2020-12-10 17:40:29,799 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 17:40:29,799 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 17:40:29,800 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 17:40:29,801 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 17:41:11,276 SSD INFO: Using 1 GPUs
+2020-12-10 17:41:11,276 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 17:41:11,277 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 17:41:11,280 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 17:41:11,281 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 17:44:05,476 SSD INFO: Using 1 GPUs
+2020-12-10 17:44:05,477 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 17:44:05,477 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 17:44:05,478 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 320
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 17:44:05,479 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 320
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 17:44:07,078 SSD.trainer INFO: No checkpoint found.
+2020-12-10 17:44:07,292 SSD.trainer INFO: Start training ...
+2020-12-10 18:03:32,336 SSD INFO: Using 1 GPUs
+2020-12-10 18:03:32,336 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 18:03:32,336 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 18:03:32,337 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 160
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 18:03:32,337 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 160
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 18:04:20,078 SSD INFO: Using 1 GPUs
+2020-12-10 18:04:20,079 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 18:04:20,079 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 18:04:20,079 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 160
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 18:04:20,080 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 160
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 18:04:21,623 SSD.trainer INFO: No checkpoint found.
+2020-12-10 18:04:21,631 SSD.trainer INFO: Start training ...
+2020-12-10 18:10:35,272 SSD INFO: Using 1 GPUs
+2020-12-10 18:10:35,272 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 18:10:35,273 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 18:10:35,273 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 160
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 18:10:35,274 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 160
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 18:10:36,812 SSD.trainer INFO: No checkpoint found.
+2020-12-10 18:10:36,821 SSD.trainer INFO: Start training ...
+2020-12-10 18:19:35,682 SSD INFO: Using 1 GPUs
+2020-12-10 18:19:35,683 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 18:19:35,683 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 18:19:35,684 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 160
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 18:19:35,684 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 160
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 18:19:37,229 SSD.trainer INFO: No checkpoint found.
+2020-12-10 18:19:37,239 SSD.trainer INFO: Start training ...
+2020-12-10 19:00:22,474 SSD INFO: Using 1 GPUs
+2020-12-10 19:00:22,474 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 19:00:22,475 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 19:00:22,475 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 160
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 19:00:22,476 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 160
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 19:00:24,124 SSD.trainer INFO: No checkpoint found.
+2020-12-10 19:00:24,134 SSD.trainer INFO: Start training ...
+2020-12-10 19:14:19,746 SSD INFO: Using 1 GPUs
+2020-12-10 19:14:19,747 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 19:14:19,747 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 19:14:19,748 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 160
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 19:14:19,748 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 160
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 19:16:18,077 SSD INFO: Using 1 GPUs
+2020-12-10 19:16:18,078 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 19:16:18,078 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 19:16:18,079 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 160
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 19:16:18,079 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 160
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 19:16:19,726 SSD.trainer INFO: No checkpoint found.
+2020-12-10 19:16:19,735 SSD.trainer INFO: Start training ...
+2020-12-10 19:17:13,909 SSD INFO: Using 1 GPUs
+2020-12-10 19:17:13,909 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 19:17:13,910 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 19:17:13,910 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 160
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 19:17:13,911 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 160
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 19:17:30,686 SSD INFO: Using 1 GPUs
+2020-12-10 19:17:30,687 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 19:17:30,687 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 19:17:30,688 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 160
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 19:17:30,689 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 160
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (232, 1024, 512, 256, 256, 64)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6, 6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5, 3, 2, 1]
+    MAX_SIZES: [105, 150, 195, 240, 285, 330]
+    MIN_SIZES: [60, 105, 150, 195, 240, 285]
+    STRIDES: [16, 32, 64, 107, 160, 320]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 19:17:32,280 SSD.trainer INFO: No checkpoint found.
+2020-12-10 19:17:32,291 SSD.trainer INFO: Start training ...
+2020-12-10 20:31:54,591 SSD INFO: Using 1 GPUs
+2020-12-10 20:31:54,591 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 20:31:54,591 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 20:31:54,592 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (40,96,320)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5]
+    STRIDES: [8, 16, 32]
+    MIN_SIZES: [30, 52, 75]
+    MAX_SIZES: [52, 75, 98]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 160
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 8
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 20:31:54,593 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 160
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (40, 96, 320)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5]
+    MAX_SIZES: [52, 75, 98]
+    MIN_SIZES: [30, 52, 75]
+    STRIDES: [8, 16, 32]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 8
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 20:31:56,230 SSD.trainer INFO: No checkpoint found.
+2020-12-10 20:31:56,239 SSD.trainer INFO: Start training ...
+2020-12-10 20:32:09,909 SSD.trainer INFO: iter: 000010, lr: 0.00035, total_loss: 30.530 (30.530), reg_loss: 5.828 (5.828), cls_loss: 24.702 (24.702), time: 1.168 (1.168), eta: 1 day, 14:55:34, mem: 956M
+2020-12-10 20:32:12,489 SSD.trainer INFO: iter: 000020, lr: 0.00036, total_loss: 27.971 (29.250), reg_loss: 6.365 (6.097), cls_loss: 21.605 (23.153), time: 0.267 (0.717), eta: 23:54:23, mem: 956M
+2020-12-10 20:32:15,111 SSD.trainer INFO: iter: 000030, lr: 0.00037, total_loss: 22.524 (27.008), reg_loss: 5.062 (5.752), cls_loss: 17.462 (21.256), time: 0.262 (0.566), eta: 18:50:49, mem: 956M
+2020-12-10 20:32:47,502 SSD INFO: Using 1 GPUs
+2020-12-10 20:32:47,503 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 20:32:47,504 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 20:32:47,504 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (40,96,320)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5]
+    STRIDES: [8, 16, 32]
+    MIN_SIZES: [30, 52, 75]
+    MAX_SIZES: [52, 75, 98]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 160
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 16
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 20:32:47,505 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 160
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (40, 96, 320)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5]
+    MAX_SIZES: [52, 75, 98]
+    MIN_SIZES: [30, 52, 75]
+    STRIDES: [8, 16, 32]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 16
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 20:32:49,047 SSD.trainer INFO: No checkpoint found.
+2020-12-10 20:32:49,056 SSD.trainer INFO: Start training ...
+2020-12-10 20:33:03,797 SSD.trainer INFO: iter: 000010, lr: 0.00035, total_loss: 31.187 (31.187), reg_loss: 6.349 (6.349), cls_loss: 24.838 (24.838), time: 1.288 (1.288), eta: 1 day, 18:55:52, mem: 927M
+2020-12-10 20:33:10,864 SSD.trainer INFO: iter: 000020, lr: 0.00036, total_loss: 25.342 (28.265), reg_loss: 5.589 (5.969), cls_loss: 19.753 (22.295), time: 0.707 (0.997), eta: 1 day, 9:14:28, mem: 927M
+2020-12-10 20:33:19,005 SSD.trainer INFO: iter: 000030, lr: 0.00037, total_loss: 23.077 (26.535), reg_loss: 5.317 (5.752), cls_loss: 17.759 (20.783), time: 0.814 (0.936), eta: 1 day, 7:12:05, mem: 927M
+2020-12-10 20:33:24,481 SSD.trainer INFO: iter: 000040, lr: 0.00039, total_loss: 22.039 (25.411), reg_loss: 5.210 (5.617), cls_loss: 16.829 (19.795), time: 0.548 (0.839), eta: 1 day, 3:57:44, mem: 927M
+2020-12-10 20:33:30,154 SSD.trainer INFO: iter: 000050, lr: 0.00040, total_loss: 21.120 (24.553), reg_loss: 4.885 (5.470), cls_loss: 16.235 (19.083), time: 0.567 (0.785), eta: 1 day, 2:08:54, mem: 927M
+2020-12-10 20:33:35,646 SSD.trainer INFO: iter: 000060, lr: 0.00041, total_loss: 20.406 (23.862), reg_loss: 4.716 (5.344), cls_loss: 15.690 (18.517), time: 0.549 (0.746), eta: 1 day, 0:50:16, mem: 927M
+2020-12-10 21:54:52,739 SSD INFO: Using 1 GPUs
+2020-12-10 21:54:52,757 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 21:54:52,757 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 21:54:52,758 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (40,96,320)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5]
+    STRIDES: [8, 16, 32]
+    MIN_SIZES: [30, 52, 75]
+    MAX_SIZES: [52, 75, 98]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 160
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 8
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 21:54:52,759 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 160
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (40, 96, 320)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5]
+    MAX_SIZES: [52, 75, 98]
+    MIN_SIZES: [30, 52, 75]
+    STRIDES: [8, 16, 32]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 8
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 21:55:10,750 SSD.trainer INFO: No checkpoint found.
+2020-12-10 21:55:10,791 SSD.trainer INFO: Start training ...
+2020-12-10 21:56:04,316 SSD INFO: Using 1 GPUs
+2020-12-10 21:56:04,316 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 21:56:04,317 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 21:56:04,317 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (40,96,320)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5]
+    STRIDES: [8, 16, 32]
+    MIN_SIZES: [30, 52, 75]
+    MAX_SIZES: [52, 75, 98]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 160
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 8
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 21:56:04,318 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 160
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (40, 96, 320)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5]
+    MAX_SIZES: [52, 75, 98]
+    MIN_SIZES: [30, 52, 75]
+    STRIDES: [8, 16, 32]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 8
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 21:56:05,923 SSD.trainer INFO: No checkpoint found.
+2020-12-10 21:56:05,934 SSD.trainer INFO: Start training ...
+2020-12-10 21:59:10,315 SSD INFO: Using 1 GPUs
+2020-12-10 21:59:10,315 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 21:59:10,316 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 21:59:10,316 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (40,96,320)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5]
+    STRIDES: [8, 16, 32]
+    MIN_SIZES: [30, 52, 75]
+    MAX_SIZES: [52, 75, 98]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 160
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 8
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 21:59:10,317 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 160
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (40, 96, 320)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5]
+    MAX_SIZES: [52, 75, 98]
+    MIN_SIZES: [30, 52, 75]
+    STRIDES: [8, 16, 32]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 8
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 21:59:11,888 SSD.trainer INFO: No checkpoint found.
+2020-12-10 21:59:11,898 SSD.trainer INFO: Start training ...
+2020-12-10 22:01:30,193 SSD INFO: Using 1 GPUs
+2020-12-10 22:01:30,194 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 22:01:30,194 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 22:01:30,195 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (40,96,320)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5]
+    STRIDES: [8, 16, 32]
+    MIN_SIZES: [30, 52, 75]
+    MAX_SIZES: [52, 75, 98]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 160
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 8
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 22:01:30,195 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 160
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (40, 96, 320)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5]
+    MAX_SIZES: [52, 75, 98]
+    MIN_SIZES: [30, 52, 75]
+    STRIDES: [8, 16, 32]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 8
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 22:01:31,790 SSD.trainer INFO: No checkpoint found.
+2020-12-10 22:01:31,799 SSD.trainer INFO: Start training ...
+2020-12-10 22:05:17,391 SSD INFO: Using 1 GPUs
+2020-12-10 22:05:17,391 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 22:05:17,392 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 22:05:17,393 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (40,96,320)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5]
+    STRIDES: [8, 16, 32]
+    MIN_SIZES: [30, 52, 75]
+    MAX_SIZES: [52, 75, 98]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 160
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 8
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 22:05:17,393 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 160
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (40, 96, 320)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5]
+    MAX_SIZES: [52, 75, 98]
+    MIN_SIZES: [30, 52, 75]
+    STRIDES: [8, 16, 32]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 8
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 22:06:41,918 SSD INFO: Using 1 GPUs
+2020-12-10 22:06:41,918 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 22:06:41,919 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 22:06:41,919 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (40,96,320)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5]
+    STRIDES: [8, 16, 32]
+    MIN_SIZES: [30, 52, 75]
+    MAX_SIZES: [52, 75, 98]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 224
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 8
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 22:06:41,920 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 224
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (40, 96, 320)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5]
+    MAX_SIZES: [52, 75, 98]
+    MIN_SIZES: [30, 52, 75]
+    STRIDES: [8, 16, 32]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 8
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 22:14:25,151 SSD INFO: Using 1 GPUs
+2020-12-10 22:14:25,151 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 22:14:25,151 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 22:14:25,152 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (40,96,320)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5]
+    STRIDES: [8, 16, 32]
+    MIN_SIZES: [30, 52, 75]
+    MAX_SIZES: [52, 75, 98]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 224
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 8
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 22:14:25,153 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 224
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (40, 96, 320)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5]
+    MAX_SIZES: [52, 75, 98]
+    MIN_SIZES: [30, 52, 75]
+    STRIDES: [8, 16, 32]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 8
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 22:17:42,258 SSD INFO: Using 1 GPUs
+2020-12-10 22:17:42,259 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 22:17:42,259 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 22:17:42,260 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (40,96,320)
+  PRIORS:
+    FEATURE_MAPS: [20, 10, 5]
+    STRIDES: [8, 16, 32]
+    MIN_SIZES: [30, 52, 75]
+    MAX_SIZES: [52, 75, 98]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 224
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 8
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 22:17:42,260 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 224
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (40, 96, 320)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [20, 10, 5]
+    MAX_SIZES: [52, 75, 98]
+    MIN_SIZES: [30, 52, 75]
+    STRIDES: [8, 16, 32]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 8
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 22:17:44,355 SSD.trainer INFO: No checkpoint found.
+2020-12-10 22:17:44,365 SSD.trainer INFO: Start training ...
+2020-12-10 22:23:26,688 SSD INFO: Using 1 GPUs
+2020-12-10 22:23:26,688 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 22:23:26,688 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 22:23:26,689 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (40,96,320)
+  PRIORS:
+    FEATURE_MAPS: [28, 14, 7]
+    STRIDES: [8, 16, 32]
+    MIN_SIZES: [42, 74, 105]
+    MAX_SIZES: [74, 105, 136]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 224
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 8
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 22:23:26,706 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 224
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (40, 96, 320)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [28, 14, 7]
+    MAX_SIZES: [74, 105, 136]
+    MIN_SIZES: [42, 74, 105]
+    STRIDES: [8, 16, 32]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 8
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 22:23:28,848 SSD.trainer INFO: No checkpoint found.
+2020-12-10 22:23:28,860 SSD.trainer INFO: Start training ...
+2020-12-10 22:23:45,454 SSD.trainer INFO: iter: 000010, lr: 0.00035, total_loss: 29.902 (29.902), reg_loss: 5.767 (5.767), cls_loss: 24.135 (24.135), time: 1.469 (1.469), eta: 2 days, 0:58:08, mem: 1317M
+2020-12-10 22:31:36,708 SSD INFO: Using 1 GPUs
+2020-12-10 22:31:36,709 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 22:31:36,709 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 22:31:36,710 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (40,96,320)
+  PRIORS:
+    FEATURE_MAPS: [28, 14, 7]
+    STRIDES: [8, 16, 32]
+    MIN_SIZES: [42, 74, 105]
+    MAX_SIZES: [74, 105, 136]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 224
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 8
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 22:31:36,710 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 224
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (40, 96, 320)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [28, 14, 7]
+    MAX_SIZES: [74, 105, 136]
+    MIN_SIZES: [42, 74, 105]
+    STRIDES: [8, 16, 32]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 8
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 22:31:38,774 SSD.trainer INFO: No checkpoint found.
+2020-12-10 22:31:38,785 SSD.trainer INFO: Start training ...
+2020-12-10 22:31:55,396 SSD.trainer INFO: iter: 000010, lr: 0.00035, total_loss: 29.199 (29.199), reg_loss: 5.251 (5.251), cls_loss: 23.948 (23.948), time: 1.474 (1.474), eta: 2 days, 1:07:53, mem: 1317M
+2020-12-10 22:32:02,529 SSD.trainer INFO: iter: 000020, lr: 0.00036, total_loss: 22.325 (25.762), reg_loss: 4.500 (4.875), cls_loss: 17.825 (20.887), time: 0.713 (1.094), eta: 1 day, 12:27:02, mem: 1317M
+2020-12-10 22:46:38,286 SSD INFO: Using 1 GPUs
+2020-12-10 22:46:38,286 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=2500, skip_test=False, use_tensorboard=True)
+2020-12-10 22:46:38,287 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 22:46:38,288 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (40,96,320)
+  PRIORS:
+    FEATURE_MAPS: [28, 14, 7]
+    STRIDES: [8, 16, 32]
+    MIN_SIZES: [42, 74, 105]
+    MAX_SIZES: [74, 105, 136]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 224
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 22:46:38,288 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 224
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (40, 96, 320)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [28, 14, 7]
+    MAX_SIZES: [74, 105, 136]
+    MIN_SIZES: [42, 74, 105]
+    STRIDES: [8, 16, 32]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 22:46:40,354 SSD.trainer INFO: No checkpoint found.
+2020-12-10 22:46:40,366 SSD.trainer INFO: Start training ...
+2020-12-10 22:46:53,241 SSD.trainer INFO: iter: 000010, lr: 0.00035, total_loss: 30.506 (30.506), reg_loss: 6.609 (6.609), cls_loss: 23.897 (23.897), time: 1.097 (1.097), eta: 1 day, 12:33:44, mem: 1040M
+2020-12-10 22:46:57,511 SSD.trainer INFO: iter: 000020, lr: 0.00036, total_loss: 23.253 (26.880), reg_loss: 4.917 (5.763), cls_loss: 18.336 (21.117), time: 0.427 (0.762), eta: 1 day, 1:23:49, mem: 1040M
+2020-12-10 22:47:01,759 SSD.trainer INFO: iter: 000030, lr: 0.00037, total_loss: 22.370 (25.376), reg_loss: 4.523 (5.349), cls_loss: 17.847 (20.027), time: 0.425 (0.650), eta: 21:38:50, mem: 1040M
+2020-12-10 22:47:05,983 SSD.trainer INFO: iter: 000040, lr: 0.00039, total_loss: 21.061 (24.298), reg_loss: 4.315 (5.091), cls_loss: 16.746 (19.207), time: 0.422 (0.593), eta: 19:45:10, mem: 1040M
+2020-12-10 22:47:10,288 SSD.trainer INFO: iter: 000050, lr: 0.00040, total_loss: 20.435 (23.525), reg_loss: 3.885 (4.850), cls_loss: 16.550 (18.675), time: 0.431 (0.560), eta: 18:40:13, mem: 1040M
+2020-12-10 22:47:14,826 SSD.trainer INFO: iter: 000060, lr: 0.00041, total_loss: 20.721 (23.058), reg_loss: 4.828 (4.846), cls_loss: 15.893 (18.212), time: 0.454 (0.543), eta: 18:04:39, mem: 1040M
+2020-12-10 22:47:19,317 SSD.trainer INFO: iter: 000070, lr: 0.00043, total_loss: 19.030 (22.482), reg_loss: 4.258 (4.762), cls_loss: 14.772 (17.720), time: 0.449 (0.529), eta: 17:37:50, mem: 1040M
+2020-12-10 22:47:25,434 SSD.trainer INFO: iter: 000080, lr: 0.00044, total_loss: 18.417 (21.974), reg_loss: 4.075 (4.676), cls_loss: 14.342 (17.298), time: 0.612 (0.540), eta: 17:58:19, mem: 1040M
+2020-12-10 22:47:30,251 SSD.trainer INFO: iter: 000090, lr: 0.00045, total_loss: 17.990 (21.531), reg_loss: 3.821 (4.581), cls_loss: 14.169 (16.950), time: 0.482 (0.533), eta: 17:45:25, mem: 1040M
+2020-12-10 22:47:34,469 SSD.trainer INFO: iter: 000100, lr: 0.00047, total_loss: 17.709 (21.149), reg_loss: 3.811 (4.504), cls_loss: 13.898 (16.645), time: 0.422 (0.522), eta: 17:23:05, mem: 1040M
+2020-12-10 22:47:38,648 SSD.trainer INFO: iter: 000110, lr: 0.00048, total_loss: 18.601 (20.918), reg_loss: 5.119 (4.560), cls_loss: 13.482 (16.357), time: 0.418 (0.513), eta: 17:04:05, mem: 1040M
+2020-12-10 22:47:42,835 SSD.trainer INFO: iter: 000120, lr: 0.00049, total_loss: 18.628 (20.727), reg_loss: 5.382 (4.629), cls_loss: 13.246 (16.098), time: 0.419 (0.505), eta: 16:48:22, mem: 1040M
+2020-12-10 22:47:47,035 SSD.trainer INFO: iter: 000130, lr: 0.00051, total_loss: 18.269 (20.538), reg_loss: 4.995 (4.657), cls_loss: 13.273 (15.881), time: 0.420 (0.498), eta: 16:35:17, mem: 1040M
+2020-12-10 22:47:51,207 SSD.trainer INFO: iter: 000140, lr: 0.00052, total_loss: 16.431 (20.244), reg_loss: 3.714 (4.589), cls_loss: 12.717 (15.655), time: 0.417 (0.492), eta: 16:23:38, mem: 1040M
+2020-12-10 22:47:55,381 SSD.trainer INFO: iter: 000150, lr: 0.00053, total_loss: 15.647 (19.938), reg_loss: 3.423 (4.512), cls_loss: 12.223 (15.426), time: 0.417 (0.487), eta: 16:13:34, mem: 1040M
+2020-12-10 22:47:59,514 SSD.trainer INFO: iter: 000160, lr: 0.00055, total_loss: 16.740 (19.738), reg_loss: 3.815 (4.468), cls_loss: 12.926 (15.270), time: 0.413 (0.483), eta: 16:04:15, mem: 1040M
+2020-12-10 22:48:03,681 SSD.trainer INFO: iter: 000170, lr: 0.00056, total_loss: 16.302 (19.536), reg_loss: 3.589 (4.416), cls_loss: 12.713 (15.119), time: 0.417 (0.479), eta: 15:56:24, mem: 1040M
+2020-12-10 22:48:07,921 SSD.trainer INFO: iter: 000180, lr: 0.00057, total_loss: 16.413 (19.362), reg_loss: 4.002 (4.393), cls_loss: 12.411 (14.969), time: 0.424 (0.476), eta: 15:50:14, mem: 1040M
+2020-12-10 22:48:12,856 SSD.trainer INFO: iter: 000190, lr: 0.00059, total_loss: 16.040 (19.188), reg_loss: 3.779 (4.361), cls_loss: 12.262 (14.826), time: 0.494 (0.477), eta: 15:52:00, mem: 1040M
+2020-12-10 22:48:17,823 SSD.trainer INFO: iter: 000200, lr: 0.00060, total_loss: 16.301 (19.043), reg_loss: 4.491 (4.368), cls_loss: 11.810 (14.676), time: 0.497 (0.478), eta: 15:53:55, mem: 1040M
+2020-12-10 22:48:22,816 SSD.trainer INFO: iter: 000210, lr: 0.00061, total_loss: 15.184 (18.859), reg_loss: 3.605 (4.331), cls_loss: 11.579 (14.528), time: 0.499 (0.479), eta: 15:55:53, mem: 1040M
+2020-12-10 22:48:27,823 SSD.trainer INFO: iter: 000220, lr: 0.00063, total_loss: 17.049 (18.777), reg_loss: 5.610 (4.389), cls_loss: 11.439 (14.388), time: 0.501 (0.480), eta: 15:57:48, mem: 1040M
+2020-12-10 22:48:32,924 SSD.trainer INFO: iter: 000230, lr: 0.00064, total_loss: 15.808 (18.648), reg_loss: 4.354 (4.388), cls_loss: 11.454 (14.260), time: 0.510 (0.481), eta: 16:00:20, mem: 1040M
+2020-12-10 22:48:38,516 SSD.trainer INFO: iter: 000240, lr: 0.00065, total_loss: 15.621 (18.522), reg_loss: 3.890 (4.367), cls_loss: 11.731 (14.155), time: 0.559 (0.484), eta: 16:06:45, mem: 1040M
+2020-12-10 22:48:43,613 SSD.trainer INFO: iter: 000250, lr: 0.00067, total_loss: 14.695 (18.369), reg_loss: 3.655 (4.339), cls_loss: 11.040 (14.030), time: 0.510 (0.485), eta: 16:08:42, mem: 1040M
+2020-12-10 22:51:15,393 SSD INFO: Using 1 GPUs
+2020-12-10 22:51:15,393 SSD INFO: Namespace(config_file='configs/shufflenet_ssd320_voc0712.yaml', distributed=False, eval_step=2500, local_rank=0, log_step=10, num_gpus=1, opts=[], save_step=500, skip_test=False, use_tensorboard=True)
+2020-12-10 22:51:15,393 SSD INFO: Loaded configuration file configs/shufflenet_ssd320_voc0712.yaml
+2020-12-10 22:51:15,394 SSD INFO: 
+MODEL:
+  NUM_CLASSES: 21
+  BOX_HEAD:
+    PREDICTOR: 'SSDLiteBoxPredictor'
+  BACKBONE:
+    NAME: 'shufflenet_v2'
+    OUT_CHANNELS: (40,96,320)
+  PRIORS:
+    FEATURE_MAPS: [28, 14, 7]
+    STRIDES: [8, 16, 32]
+    MIN_SIZES: [42, 74, 105]
+    MAX_SIZES: [74, 105, 136]
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+INPUT:
+  IMAGE_SIZE: 224
+DATASETS:
+  TRAIN: ("voc_2007_trainval", "voc_2012_trainval")
+  TEST: ("voc_2007_test", )
+SOLVER:
+  MAX_ITER: 120000
+  LR_STEPS: [80000, 100000]
+  GAMMA: 0.1
+  BATCH_SIZE: 2
+  LR: 1e-3
+
+OUTPUT_DIR: 'outputs/shufflenet_v2_ssd320_voc0712'
+
+2020-12-10 22:51:15,394 SSD INFO: Running with config:
+DATASETS:
+  TEST: ('voc_2007_test',)
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+INPUT:
+  IMAGE_SIZE: 224
+  PIXEL_MEAN: [123, 117, 104]
+MODEL:
+  BACKBONE:
+    NAME: shufflenet_v2
+    OUT_CHANNELS: (40, 96, 320)
+    PRETRAINED: True
+  BOX_HEAD:
+    NAME: SSDBoxHead
+    PREDICTOR: SSDLiteBoxPredictor
+  CENTER_VARIANCE: 0.1
+  DEVICE: cuda
+  META_ARCHITECTURE: SSDDetector
+  NEG_POS_RATIO: 3
+  NUM_CLASSES: 21
+  PRIORS:
+    ASPECT_RATIOS: [[2, 3], [2, 3], [2, 3]]
+    BOXES_PER_LOCATION: [6, 6, 6]
+    CLIP: True
+    FEATURE_MAPS: [28, 14, 7]
+    MAX_SIZES: [74, 105, 136]
+    MIN_SIZES: [42, 74, 105]
+    STRIDES: [8, 16, 32]
+  SIZE_VARIANCE: 0.2
+  THRESHOLD: 0.5
+OUTPUT_DIR: outputs/shufflenet_v2_ssd320_voc0712
+SOLVER:
+  BATCH_SIZE: 2
+  GAMMA: 0.1
+  LR: 0.001
+  LR_STEPS: [80000, 100000]
+  MAX_ITER: 120000
+  MOMENTUM: 0.9
+  WARMUP_FACTOR: 0.3333333333333333
+  WARMUP_ITERS: 500
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 10
+  CONFIDENCE_THRESHOLD: 0.01
+  MAX_PER_CLASS: -1
+  MAX_PER_IMAGE: 100
+  NMS_THRESHOLD: 0.45
+2020-12-10 22:51:17,483 SSD.trainer INFO: No checkpoint found.
+2020-12-10 22:51:17,495 SSD.trainer INFO: Start training ...
+2020-12-10 22:51:31,900 SSD.trainer INFO: iter: 000010, lr: 0.00035, total_loss: 31.861 (31.861), reg_loss: 5.907 (5.907), cls_loss: 25.954 (25.954), time: 1.251 (1.251), eta: 1 day, 17:41:06, mem: 1040M
+2020-12-10 22:51:36,194 SSD.trainer INFO: iter: 000020, lr: 0.00036, total_loss: 24.732 (28.296), reg_loss: 5.664 (5.785), cls_loss: 19.068 (22.511), time: 0.429 (0.840), eta: 1 day, 3:59:44, mem: 1040M
+2020-12-10 22:51:40,488 SSD.trainer INFO: iter: 000030, lr: 0.00037, total_loss: 23.610 (26.734), reg_loss: 5.516 (5.696), cls_loss: 18.094 (21.038), time: 0.429 (0.703), eta: 23:25:52, mem: 1040M
+2020-12-10 22:51:44,758 SSD.trainer INFO: iter: 000040, lr: 0.00039, total_loss: 21.318 (25.380), reg_loss: 4.791 (5.470), cls_loss: 16.527 (19.911), time: 0.427 (0.634), eta: 21:07:43, mem: 1040M
+2020-12-10 22:51:49,032 SSD.trainer INFO: iter: 000050, lr: 0.00040, total_loss: 21.320 (24.568), reg_loss: 5.225 (5.421), cls_loss: 16.095 (19.147), time: 0.428 (0.593), eta: 19:45:02, mem: 1040M
+2020-12-10 22:51:53,222 SSD.trainer INFO: iter: 000060, lr: 0.00041, total_loss: 20.653 (23.916), reg_loss: 4.736 (5.307), cls_loss: 15.916 (18.609), time: 0.419 (0.564), eta: 18:47:02, mem: 1040M
+2020-12-10 22:51:57,468 SSD.trainer INFO: iter: 000070, lr: 0.00043, total_loss: 19.793 (23.327), reg_loss: 4.275 (5.159), cls_loss: 15.518 (18.167), time: 0.425 (0.544), eta: 18:07:10, mem: 1040M
+2020-12-10 22:52:01,686 SSD.trainer INFO: iter: 000080, lr: 0.00044, total_loss: 17.979 (22.658), reg_loss: 3.555 (4.959), cls_loss: 14.424 (17.699), time: 0.422 (0.529), eta: 17:36:36, mem: 1040M
+2020-12-10 22:52:05,868 SSD.trainer INFO: iter: 000090, lr: 0.00045, total_loss: 18.799 (22.229), reg_loss: 4.341 (4.890), cls_loss: 14.458 (17.339), time: 0.418 (0.516), eta: 17:11:58, mem: 1040M
+2020-12-10 22:52:10,078 SSD.trainer INFO: iter: 000100, lr: 0.00047, total_loss: 19.103 (21.917), reg_loss: 5.098 (4.911), cls_loss: 14.005 (17.006), time: 0.421 (0.507), eta: 16:52:49, mem: 1040M
+2020-12-10 22:52:14,267 SSD.trainer INFO: iter: 000110, lr: 0.00048, total_loss: 17.933 (21.555), reg_loss: 4.171 (4.844), cls_loss: 13.761 (16.711), time: 0.419 (0.499), eta: 16:36:46, mem: 1040M
+2020-12-10 22:52:18,615 SSD.trainer INFO: iter: 000120, lr: 0.00049, total_loss: 18.089 (21.266), reg_loss: 4.904 (4.849), cls_loss: 13.185 (16.417), time: 0.435 (0.493), eta: 16:26:00, mem: 1040M
+2020-12-10 22:52:23,603 SSD.trainer INFO: iter: 000130, lr: 0.00051, total_loss: 17.050 (20.941), reg_loss: 3.792 (4.767), cls_loss: 13.258 (16.174), time: 0.499 (0.494), eta: 16:26:46, mem: 1040M
+2020-12-10 22:52:28,604 SSD.trainer INFO: iter: 000140, lr: 0.00052, total_loss: 17.167 (20.672), reg_loss: 4.583 (4.754), cls_loss: 12.584 (15.918), time: 0.500 (0.494), eta: 16:27:34, mem: 1040M
+2020-12-10 22:52:33,648 SSD.trainer INFO: iter: 000150, lr: 0.00053, total_loss: 16.939 (20.423), reg_loss: 4.515 (4.738), cls_loss: 12.424 (15.685), time: 0.504 (0.495), eta: 16:28:48, mem: 1040M
+2020-12-10 22:52:39,196 SSD.trainer INFO: iter: 000160, lr: 0.00055, total_loss: 19.327 (20.354), reg_loss: 6.201 (4.830), cls_loss: 13.126 (15.525), time: 0.555 (0.499), eta: 16:36:10, mem: 1040M
+2020-12-10 22:52:44,363 SSD.trainer INFO: iter: 000170, lr: 0.00056, total_loss: 15.903 (20.093), reg_loss: 3.689 (4.763), cls_loss: 12.214 (15.330), time: 0.517 (0.500), eta: 16:38:13, mem: 1040M
+2020-12-10 22:52:49,424 SSD.trainer INFO: iter: 000180, lr: 0.00057, total_loss: 16.640 (19.901), reg_loss: 4.597 (4.753), cls_loss: 12.043 (15.147), time: 0.506 (0.500), eta: 16:38:50, mem: 1040M
+2020-12-10 22:52:55,012 SSD.trainer INFO: iter: 000190, lr: 0.00059, total_loss: 15.616 (19.675), reg_loss: 3.638 (4.695), cls_loss: 11.978 (14.981), time: 0.559 (0.503), eta: 16:44:53, mem: 1040M
+2020-12-10 22:53:00,566 SSD.trainer INFO: iter: 000200, lr: 0.00060, total_loss: 15.210 (19.452), reg_loss: 3.412 (4.631), cls_loss: 11.799 (14.821), time: 0.555 (0.506), eta: 16:50:01, mem: 1040M
+2020-12-10 22:53:06,127 SSD.trainer INFO: iter: 000210, lr: 0.00061, total_loss: 15.300 (19.254), reg_loss: 3.555 (4.579), cls_loss: 11.744 (14.675), time: 0.556 (0.508), eta: 16:54:43, mem: 1040M
+2020-12-10 22:53:11,702 SSD.trainer INFO: iter: 000220, lr: 0.00063, total_loss: 15.195 (19.070), reg_loss: 3.800 (4.544), cls_loss: 11.396 (14.526), time: 0.558 (0.510), eta: 16:59:06, mem: 1040M
+2020-12-10 22:53:17,243 SSD.trainer INFO: iter: 000230, lr: 0.00064, total_loss: 15.410 (18.911), reg_loss: 3.552 (4.501), cls_loss: 11.858 (14.410), time: 0.554 (0.512), eta: 17:02:48, mem: 1040M
+2020-12-10 22:53:23,618 SSD.trainer INFO: iter: 000240, lr: 0.00065, total_loss: 13.995 (18.706), reg_loss: 3.431 (4.456), cls_loss: 10.564 (14.250), time: 0.638 (0.518), eta: 17:13:07, mem: 1040M
+2020-12-10 22:53:29,340 SSD.trainer INFO: iter: 000250, lr: 0.00067, total_loss: 14.708 (18.546), reg_loss: 3.880 (4.433), cls_loss: 10.828 (14.113), time: 0.572 (0.520), eta: 17:17:24, mem: 1040M
+2020-12-10 22:53:35,111 SSD.trainer INFO: iter: 000260, lr: 0.00068, total_loss: 14.307 (18.383), reg_loss: 3.410 (4.394), cls_loss: 10.896 (13.989), time: 0.577 (0.522), eta: 17:21:42, mem: 1040M
+2020-12-10 22:53:40,730 SSD.trainer INFO: iter: 000270, lr: 0.00069, total_loss: 14.477 (18.238), reg_loss: 3.555 (4.363), cls_loss: 10.923 (13.876), time: 0.562 (0.523), eta: 17:24:34, mem: 1040M
+2020-12-10 22:53:47,079 SSD.trainer INFO: iter: 000280, lr: 0.00071, total_loss: 13.920 (18.084), reg_loss: 3.631 (4.337), cls_loss: 10.289 (13.747), time: 0.635 (0.527), eta: 17:32:25, mem: 1040M
+2020-12-10 22:53:55,117 SSD.trainer INFO: iter: 000290, lr: 0.00072, total_loss: 13.288 (17.919), reg_loss: 3.020 (4.291), cls_loss: 10.268 (13.627), time: 0.804 (0.537), eta: 17:51:21, mem: 1040M
+2020-12-10 22:54:01,524 SSD.trainer INFO: iter: 000300, lr: 0.00073, total_loss: 14.937 (17.819), reg_loss: 4.916 (4.312), cls_loss: 10.021 (13.507), time: 0.641 (0.540), eta: 17:58:09, mem: 1040M
+2020-12-10 22:54:09,188 SSD.trainer INFO: iter: 000310, lr: 0.00075, total_loss: 13.139 (17.668), reg_loss: 3.271 (4.278), cls_loss: 9.868 (13.390), time: 0.766 (0.548), eta: 18:12:36, mem: 1040M
+2020-12-10 22:54:23,657 SSD.trainer INFO: iter: 000320, lr: 0.00076, total_loss: 13.003 (17.522), reg_loss: 3.219 (4.245), cls_loss: 9.783 (13.277), time: 1.447 (0.576), eta: 19:08:33, mem: 1040M
+2020-12-10 22:54:35,928 SSD.trainer INFO: iter: 000330, lr: 0.00077, total_loss: 12.899 (17.382), reg_loss: 3.504 (4.223), cls_loss: 9.395 (13.159), time: 1.227 (0.596), eta: 19:47:50, mem: 1040M
+2020-12-10 22:54:46,068 SSD.trainer INFO: iter: 000340, lr: 0.00079, total_loss: 12.701 (17.245), reg_loss: 3.795 (4.210), cls_loss: 8.906 (13.034), time: 1.014 (0.608), eta: 20:12:16, mem: 1040M
+2020-12-10 22:54:55,351 SSD.trainer INFO: iter: 000350, lr: 0.00080, total_loss: 12.398 (17.106), reg_loss: 3.481 (4.189), cls_loss: 8.917 (12.917), time: 0.928 (0.617), eta: 20:30:25, mem: 1040M
+2020-12-10 22:55:04,200 SSD.trainer INFO: iter: 000360, lr: 0.00081, total_loss: 12.907 (16.990), reg_loss: 3.312 (4.165), cls_loss: 9.595 (12.824), time: 0.885 (0.624), eta: 20:45:10, mem: 1040M
+2020-12-10 22:55:10,831 SSD.trainer INFO: iter: 000370, lr: 0.00083, total_loss: 13.233 (16.888), reg_loss: 4.990 (4.187), cls_loss: 8.243 (12.701), time: 0.663 (0.626), eta: 20:47:09, mem: 1040M
+2020-12-10 22:55:17,261 SSD.trainer INFO: iter: 000380, lr: 0.00084, total_loss: 12.909 (16.783), reg_loss: 3.998 (4.182), cls_loss: 8.911 (12.601), time: 0.643 (0.626), eta: 20:47:57, mem: 1040M
+2020-12-10 22:55:23,750 SSD.trainer INFO: iter: 000390, lr: 0.00085, total_loss: 11.801 (16.656), reg_loss: 2.989 (4.152), cls_loss: 8.812 (12.504), time: 0.649 (0.627), eta: 20:49:02, mem: 1040M
+2020-12-10 22:55:30,202 SSD.trainer INFO: iter: 000400, lr: 0.00087, total_loss: 11.464 (16.526), reg_loss: 2.774 (4.117), cls_loss: 8.690 (12.408), time: 0.645 (0.627), eta: 20:49:51, mem: 1040M
+2020-12-10 22:55:36,603 SSD.trainer INFO: iter: 000410, lr: 0.00088, total_loss: 10.732 (16.384), reg_loss: 3.061 (4.092), cls_loss: 7.671 (12.293), time: 0.640 (0.627), eta: 20:50:23, mem: 1040M
+2020-12-10 22:55:43,021 SSD.trainer INFO: iter: 000420, lr: 0.00089, total_loss: 11.872 (16.277), reg_loss: 3.932 (4.088), cls_loss: 7.940 (12.189), time: 0.642 (0.628), eta: 20:50:58, mem: 1040M
+2020-12-10 22:55:49,488 SSD.trainer INFO: iter: 000430, lr: 0.00091, total_loss: 12.277 (16.184), reg_loss: 3.991 (4.086), cls_loss: 8.285 (12.098), time: 0.647 (0.628), eta: 20:51:44, mem: 1040M
+2020-12-10 22:55:56,101 SSD.trainer INFO: iter: 000440, lr: 0.00092, total_loss: 10.634 (16.058), reg_loss: 2.896 (4.059), cls_loss: 7.739 (11.999), time: 0.661 (0.629), eta: 20:53:09, mem: 1040M
+2020-12-10 22:56:02,683 SSD.trainer INFO: iter: 000450, lr: 0.00093, total_loss: 10.757 (15.940), reg_loss: 3.205 (4.040), cls_loss: 7.551 (11.901), time: 0.658 (0.630), eta: 20:54:20, mem: 1040M
+2020-12-10 22:56:09,210 SSD.trainer INFO: iter: 000460, lr: 0.00095, total_loss: 10.028 (15.812), reg_loss: 2.765 (4.012), cls_loss: 7.263 (11.800), time: 0.653 (0.630), eta: 20:55:14, mem: 1040M
+2020-12-10 22:56:15,906 SSD.trainer INFO: iter: 000470, lr: 0.00096, total_loss: 10.152 (15.691), reg_loss: 3.197 (3.995), cls_loss: 6.956 (11.697), time: 0.669 (0.631), eta: 20:56:48, mem: 1040M
+2020-12-10 22:56:22,409 SSD.trainer INFO: iter: 000480, lr: 0.00097, total_loss: 10.210 (15.577), reg_loss: 2.915 (3.972), cls_loss: 7.295 (11.605), time: 0.650 (0.631), eta: 20:57:30, mem: 1040M
+2020-12-10 22:56:29,011 SSD.trainer INFO: iter: 000490, lr: 0.00099, total_loss: 10.141 (15.466), reg_loss: 3.170 (3.956), cls_loss: 6.971 (11.510), time: 0.660 (0.632), eta: 20:58:34, mem: 1040M
+2020-12-10 22:56:35,472 SSD.trainer INFO: iter: 000500, lr: 0.00100, total_loss: 10.769 (15.372), reg_loss: 3.345 (3.943), cls_loss: 7.423 (11.429), time: 0.646 (0.632), eta: 20:59:02, mem: 1040M
+2020-12-10 22:56:35,495 SSD.trainer INFO: Saving checkpoint to outputs/shufflenet_v2_ssd320_voc0712\model_000500.pth
+2020-12-10 22:56:42,537 SSD.trainer INFO: iter: 000510, lr: 0.00100, total_loss: 10.817 (15.283), reg_loss: 3.906 (3.943), cls_loss: 6.911 (11.340), time: 0.706 (0.634), eta: 21:01:50, mem: 1040M
+2020-12-10 22:56:49,157 SSD.trainer INFO: iter: 000520, lr: 0.00100, total_loss: 10.121 (15.183), reg_loss: 3.002 (3.925), cls_loss: 7.120 (11.259), time: 0.662 (0.634), eta: 21:02:49, mem: 1040M
+2020-12-10 22:56:55,740 SSD.trainer INFO: iter: 000530, lr: 0.00100, total_loss: 9.856 (15.083), reg_loss: 2.975 (3.907), cls_loss: 6.881 (11.176), time: 0.658 (0.635), eta: 21:03:37, mem: 1040M
+2020-12-10 22:57:03,249 SSD.trainer INFO: iter: 000540, lr: 0.00100, total_loss: 9.981 (14.988), reg_loss: 3.101 (3.892), cls_loss: 6.880 (11.097), time: 0.751 (0.637), eta: 21:07:48, mem: 1040M
+2020-12-10 22:57:10,789 SSD.trainer INFO: iter: 000550, lr: 0.00100, total_loss: 10.919 (14.914), reg_loss: 3.654 (3.887), cls_loss: 7.265 (11.027), time: 0.754 (0.639), eta: 21:11:56, mem: 1040M
+2020-12-10 22:57:18,042 SSD.trainer INFO: iter: 000560, lr: 0.00100, total_loss: 10.553 (14.837), reg_loss: 4.001 (3.889), cls_loss: 6.552 (10.947), time: 0.725 (0.640), eta: 21:14:54, mem: 1040M
