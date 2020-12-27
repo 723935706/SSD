@@ -4,6 +4,7 @@ import torch.nn as nn
 from ssd.modeling import registry
 from timm.models.layers import SelectAdaptivePool2d
 from timm.models.layers.activations import hard_sigmoid
+from torch.nn import functional as F
 #from timm.models import resume_checkpoint
 
 
@@ -28,6 +29,68 @@ choice_block_pool = ['ir_r1_k3_s2_e4_c24_se0.25',
 arch_def = [[stem[0]]] + [[choice_block_pool[idx]
                                for repeat_times in range(len(arch_list[idx + 1]))]
                               for idx in range(len(choice_block_pool))] + [[stem[1]]]
+
+
+class hswish(nn.Module):
+    def forward(self, x):
+        out = x * F.relu6(x + 3, inplace=True) / 6
+        return out
+
+
+class hsigmoid(nn.Module):
+    def forward(self, x):
+        out = F.relu6(x + 3, inplace=True) / 6
+        return out
+
+
+class SeModule(nn.Module):
+    def __init__(self, in_size, reduction=4):
+        super(SeModule, self).__init__()
+        self.se = nn.Sequential(
+            nn.AdaptiveAvgPool2d(1),
+            nn.Conv2d(in_size, in_size // reduction, kernel_size=1, stride=1, padding=0, bias=False),
+            nn.BatchNorm2d(in_size // reduction),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(in_size // reduction, in_size, kernel_size=1, stride=1, padding=0, bias=False),
+            nn.BatchNorm2d(in_size),
+            hsigmoid()
+        )
+
+    def forward(self, x):
+        return x * self.se(x)
+
+
+class Block(nn.Module):
+    '''expand + depthwise + pointwise'''
+    def __init__(self, kernel_size, in_size, expand_size, out_size, nolinear, semodule, stride):
+        super(Block, self).__init__()
+        self.stride = stride
+        self.se = semodule
+
+        self.conv1 = nn.Conv2d(in_size, expand_size, kernel_size=1, stride=1, padding=0, bias=False)
+        self.bn1 = nn.BatchNorm2d(expand_size)
+        self.nolinear1 = nolinear
+        self.conv2 = nn.Conv2d(expand_size, expand_size, kernel_size=kernel_size, stride=stride, padding=kernel_size//2, groups=expand_size, bias=False)
+        self.bn2 = nn.BatchNorm2d(expand_size)
+        self.nolinear2 = nolinear
+        self.conv3 = nn.Conv2d(expand_size, out_size, kernel_size=1, stride=1, padding=0, bias=False)
+        self.bn3 = nn.BatchNorm2d(out_size)
+
+        self.shortcut = nn.Sequential()
+        if stride == 1 and in_size != out_size:
+            self.shortcut = nn.Sequential(
+                nn.Conv2d(in_size, out_size, kernel_size=1, stride=1, padding=0, bias=False),
+                nn.BatchNorm2d(out_size),
+            )
+
+    def forward(self, x):
+        out = self.nolinear1(self.bn1(self.conv1(x)))
+        out = self.nolinear2(self.bn2(self.conv2(out)))
+        out = self.bn3(self.conv3(out))
+        if self.se != None:
+            out = self.se(out)
+        out = out + self.shortcut(x) if self.stride==1 else out
+        return out
 
 
 class ConvBNReLU(nn.Sequential):
@@ -115,6 +178,22 @@ class ChildNet(nn.Module):
 
         # 额外层
         self.extras = nn.ModuleList([InvertedResidual(320, 640, 2, 0.2)])
+
+        # AFPN
+        self.up_640_320 = Block(3, 640, 640, 320, hswish(), SeModule(320), 1)
+        self.up_320_320 = Block(3, 320, 640, 320, hswish(), SeModule(320), 1)
+        self.up_320_96 = Block(3, 320, 640, 96, hswish(), SeModule(96), 1)
+        self.up_96_96 = Block(3, 96, 320, 96, hswish(), SeModule(96), 1)
+        self.up_96_40 = Block(3, 96, 320, 40, hswish(), SeModule(40), 1)
+        self.up_40_40 = Block(3, 40, 120, 40, hswish(), SeModule(40), 1)
+        '''
+        self.up_640_320 = nn.ModuleList([Block(3, 640, 640, 320, hswish(), SeModule(320), 1)])
+        self.up_320_320 = nn.ModuleList([Block(3, 320, 640, 320, hswish(), SeModule(320), 1)])
+        self.up_320_96 = nn.ModuleList([Block(3, 320, 640, 96, hswish(), SeModule(96), 1)])
+        self.up_96_96 = nn.ModuleList([Block(3, 96, 320, 96, hswish(), SeModule(96), 1)])
+        self.up_96_40 = nn.ModuleList([Block(3, 96, 320, 40, hswish(), SeModule(40), 1)])
+        self.up_40_40 = nn.ModuleList([Block(3, 40, 120, 40, hswish(), SeModule(40), 1)])
+        '''
         self.reset_parameters()
 
 
@@ -145,6 +224,7 @@ class ChildNet(nn.Module):
         x = self.blocks[0](x) #16*160*160
         x = self.blocks[1](x) #24*80*80
         x = self.blocks[2](x) #40*40*40
+        features.append(x)
         x = self.blocks[3](x) #80*20*20
         x = self.blocks[4](x) #96*20*20
         features.append(x)
@@ -156,16 +236,10 @@ class ChildNet(nn.Module):
             x = i(x) # 640*5*5
             features.append(x)
 
-        '''
-        x = self.global_pool(x)
-        x = self.conv_head(x)
-        x = self.act2(x)
-        features.append(x) # 1280*1*1
-        '''
-
-        # for i in features:
-        #     print(i.shape)
-        # raise AssertionError
+        # 特征融合 feature 0,1,2,3通道数分别为 40，96，320，640
+        features[2] = self.up_640_320(F.interpolate(features[3], (10, 10))) + self.up_320_320(features[2])
+        features[1] = self.up_320_96(F.interpolate(features[2], (20, 20))) + self.up_96_96(features[1])
+        features[0] = self.up_96_40(F.interpolate(features[1], (40, 40))) + self.up_40_40(features[0])
 
         return tuple(features)
 
